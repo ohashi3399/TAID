@@ -1,6 +1,6 @@
 # TAID (ICLR 2025)
 
-📚 [Paper](https://arxiv.org/abs/2501.16937) | 🤗 [Hugging Face](https://huggingface.co/SakanaAI) | 📝 [Blog](https://sakana.ai/taid/)
+📚 [Paper](https://arxiv.org/abs/2501.16937) | 🤗 [Hugging Face](https://huggingface.co/SakanaAI) | 📝 Blog \[[EN](https://sakana.ai/taid/) | [JP](https://sakana.ai/taid-ja/)\]
 
 <div align="center">
 <img alt="overview" src="./overview.png" title="overview">
