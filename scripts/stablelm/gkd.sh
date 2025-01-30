@@ -1,0 +1,11 @@
+python train.py \
+    --student_model TinyLlama/TinyLlama_v1.1 \
+    --teacher_model meta-llama/Llama-2-7b-chat-hf \
+    --data_path data/llama-2 \
+    --output_dir logs/llama-2-gkd \
+    --batch_size 4 \
+    --num_epochs 5 \
+    --loss_type js \
+    --js_beta 0.1 \
+    --sampling_type mixed \
+    --accumulate_grad_batches 2

@@ -1,0 +1,12 @@
+python train.py \
+    --student_model TinyLlama/TinyLlama_v1.1 \
+    --teacher_model microsoft/Phi-3-mini-4k-instruct \
+    --data_path data/phi-3 \
+    --output_dir logs/phi-3-distillm \
+    --batch_size 8 \
+    --num_epochs 5 \
+    --loss_type sfkl \
+    --skew_beta 0.1 \
+    --sampling_type adaptive \
+    --val_check_interval 0.5 \
+    --validate_first

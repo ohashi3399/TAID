@@ -1,0 +1,11 @@
+python train.py \
+    --student_model EleutherAI/pythia-410m \
+    --teacher_model stabilityai/stablelm-zephyr-3b \
+    --data_path data/stablelm \
+    --output_dir logs/stablelm-taid \
+    --batch_size 8 \
+    --num_epochs 5 \
+    --loss_type taid \
+    --taid_t_start 0.2 \
+    --taid_alpha 5.e-4 \
+    --taid_beta 0.99  
