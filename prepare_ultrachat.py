@@ -9,6 +9,7 @@ MODELS = {
     "phi-3": "microsoft/Phi-3-mini-4k-instruct",
     "llama-2": "meta-llama/Llama-2-7b-chat-hf",
     "stablelm": "stabilityai/stablelm-zephyr-3b",
+    "calm3": "cyberagent/calm3-22b-chat",
 }
 MAX_LENGTH = 2048
 MAX_OUTPUT_LENGTH = 512
@@ -48,7 +49,11 @@ def fn(index, data):
 
 
 def prepare_train(args, tokenizer):
-    dataset = load_dataset("HuggingFaceH4/ultrachat_200k", split="train_sft")
+    dataset = load_dataset(
+        "ryota39/wildchat-10k",
+        split="train",
+        token=os.environ.get("HUGGINGFACE_API_KEY"),
+        )
     column_names = list(dataset.features)
     dataset = dataset.map(
         tokenize,
@@ -78,7 +83,11 @@ def prepare_train(args, tokenizer):
 
 
 def prepare_test(args, tokenizer):
-    dataset = load_dataset("HuggingFaceH4/ultrachat_200k", split="test_sft")
+    dataset = load_dataset(
+        "ryota39/wildchat-10k",
+        split="test",
+        token=os.environ.get("HUGGINGFACE_API_KEY"),
+)
     column_names = list(dataset.features)
     dataset = dataset.map(
         tokenize,
@@ -137,6 +146,8 @@ if __name__ == "__main__":
         generation_prompt = "<|assistant|>\n"
     elif args.model_type in ["llama-2"]:
         generation_prompt = " [/INST] "
+    elif args.model_type == "calm3":
+        generation_prompt = "<|im_start|>assistant\n"
     else:
         raise NotImplementedError(args.model_type)
     prepare_train(args, tokenizer)
