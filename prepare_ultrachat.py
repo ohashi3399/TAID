@@ -50,7 +50,8 @@ def fn(index, data):
 
 def prepare_train(args, tokenizer):
     dataset = load_dataset(
-        "ryota39/wildchat-10k",
+        # "ryota39/wildchat-10k",
+        "ryota39/taid-dataset",
         split="train",
         token=os.environ.get("HUGGINGFACE_API_KEY"),
         )
@@ -84,7 +85,8 @@ def prepare_train(args, tokenizer):
 
 def prepare_test(args, tokenizer):
     dataset = load_dataset(
-        "ryota39/wildchat-10k",
+        # "ryota39/wildchat-10k",
+        "ryota39/taid-dataset",
         split="test",
         token=os.environ.get("HUGGINGFACE_API_KEY"),
 )

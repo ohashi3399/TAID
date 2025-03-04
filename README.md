@@ -1,3 +1,11 @@
+# TAID -fork-
+
+- flash_attention
+
+```
+MAX_JOBS=256 pip install flash-attn --no-build-isolation
+```
+
 # TAID (ICLR 2025)
 
 📚 [Paper](https://arxiv.org/abs/2501.16937) | 🤗 [Hugging Face](https://huggingface.co/SakanaAI) | 📝 Blog \[[EN](https://sakana.ai/taid/) | [JP](https://sakana.ai/taid-ja/)\]

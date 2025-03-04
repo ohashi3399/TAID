@@ -34,17 +34,17 @@ if __name__ == "__main__":
         precision="bf16-mixed",
         gradient_clip_val=1.0,
         num_sanity_val_steps=0,
-        limit_train_batches=10,
-        limit_val_batches=5,
+        # limit_train_batches=10,
+        # limit_val_batches=5,
         accumulate_grad_batches=args.accumulate_grad_batches,
         strategy=DeepSpeedStrategy(
             stage=2, allgather_bucket_size=5e8, reduce_bucket_size=5e8
         ),
         callbacks=[modelcheckpoint],
-        # logger=WandbLogger(
-        #     name=os.path.basename(args.output_dir),
-        #     project="distillation",
-        # ),
+        logger=WandbLogger(
+            name=os.path.basename(args.output_dir),
+            project="taid-calm3",
+        ),
     )
     if args.validate_first:
         trainer.validate(model, data)

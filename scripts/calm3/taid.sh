@@ -1,10 +1,10 @@
 python train.py \
-    --student_model TinyLlama/TinyLlama_v1.1 \
+    --student_model HuggingFaceTB/SmolLM2-1.7B-Instruct \
     --teacher_model cyberagent/calm3-22b-chat \
     --data_path data/calm3 \
     --output_dir logs/calm3-taid \
-    --batch_size 8 \
-    --num_epochs 5 \
+    --batch_size 1 \
+    --num_epochs 3 \
     --loss_type taid \
     --taid_t_start 0.4 \
     --taid_alpha 5.e-4 \
