@@ -30,13 +30,14 @@ def create_and_push_dataset(data, dataset_name):
             train_data.extend(items[2000:])
 
     # DatasetDictを作成
-    dataset_dict = DatasetDict({
-        "train": Dataset.from_list(train_data),
-        "test": Dataset.from_list(test_data)
-    })
+    dataset_dict = DatasetDict(
+        {"train": Dataset.from_list(train_data), "test": Dataset.from_list(test_data)}
+    )
 
     # push_to_hub
-    dataset_dict.push_to_hub(dataset_name, token=os.environ.get("HUGGINGFACE_API_TOKEN"))
+    dataset_dict.push_to_hub(
+        dataset_name, token=os.environ.get("HUGGINGFACE_API_TOKEN")
+    )
 
 
 ds_name = "ryota39/wildchat-en-ja-540k"

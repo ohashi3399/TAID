@@ -10,6 +10,7 @@ MODELS = {
     "llama-2": "meta-llama/Llama-2-7b-chat-hf",
     "stablelm": "stabilityai/stablelm-zephyr-3b",
     "calm3": "cyberagent/calm3-22b-chat",
+    "qwen2.5": "Qwen/Qwen2.5-7B-Instruct",
 }
 MAX_LENGTH = 2048
 MAX_OUTPUT_LENGTH = 512
@@ -54,7 +55,7 @@ def prepare_train(args, tokenizer):
         "ryota39/taid-dataset",
         split="train",
         token=os.environ.get("HUGGINGFACE_API_KEY"),
-        )
+    )
     column_names = list(dataset.features)
     dataset = dataset.map(
         tokenize,
@@ -89,7 +90,7 @@ def prepare_test(args, tokenizer):
         "ryota39/taid-dataset",
         split="test",
         token=os.environ.get("HUGGINGFACE_API_KEY"),
-)
+    )
     column_names = list(dataset.features)
     dataset = dataset.map(
         tokenize,
@@ -149,6 +150,8 @@ if __name__ == "__main__":
     elif args.model_type in ["llama-2"]:
         generation_prompt = " [/INST] "
     elif args.model_type == "calm3":
+        generation_prompt = "<|im_start|>assistant\n"
+    elif args.model_type == "qwen2.5":
         generation_prompt = "<|im_start|>assistant\n"
     else:
         raise NotImplementedError(args.model_type)

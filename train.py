@@ -28,7 +28,7 @@ if __name__ == "__main__":
         save_last=False,
     )
     trainer = L.Trainer(
-        devices="0,1,2,3,4,5,6,7",
+        devices="0,1,2,3",
         max_epochs=args.num_epochs,
         val_check_interval=args.val_check_interval,
         precision="bf16-mixed",
